@@ -1,6 +1,6 @@
-#Elastic Kubernetes Service (EKS)
+# Elastic Kubernetes Service (EKS)
 
-##EKS Cluster Overview
+## EKS Cluster Overview
 
 An EKS (Elastic Kubernetes Service) cluster is built from several fundamental components described as follows:
 
