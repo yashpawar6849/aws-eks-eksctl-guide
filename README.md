@@ -28,3 +28,40 @@ An EKS (Elastic Kubernetes Service) cluster is built from several fundamental co
 - Network policies within AWS VPC are utilized by EKS to control traffic flow among control plane components in individual clusters.
 - EKS cluster control plane components maintain isolation and prevent cross-communication with separate clusters or AWS accounts, unless specifically permitted via Kubernetes RBAC (Role-Based Access Control) policies.
 - These security measures combined with high availability features position EKS as a trusted and advisable platform for production environments.
+
+## Deployment Overview
+
+Now, we will walk through the deployment of an EKS cluster leveraging eksctl, a dedicated command-line utility offered by AWS for building and administering EKS clusters. Once the cluster has been successfully deployed, the following AWS resources will be created and made available:
+
+- EKS Cluster: Serves as the central control plane responsible for overseeing and orchestrating the Kubernetes cluster.
+- VPC: A Virtual Private Cloud that establishes network boundaries and provides isolation for the cluster environment.
+- Subnets: Network segments spread across multiple Availability Zones to ensure continuous availability and fault tolerance.
+- Security Groups: A collection of rules that govern and regulate both incoming and outgoing traffic directed at the cluster.
+- Node Groups: Logical groupings that house and organize the underlying worker nodes.
+- Worker Nodes: EC2 server instances that form the EKS data plane and handle actual workload execution.
+
+## EKS Prerequisites and Initial Setup
+
+### Configuring Users and Roles via AWS IAM for EKS:
+
+Begin by creating a dedicated IAM user for every individual requiring access to the EKS cluster. This can be accomplished either through the IAM console or via the CLI. Each user must be assigned a specific set of permissions and policies to ensure they have the necessary level of access.
+
+To establish the required privileges, start by creating the following custom policies:
+
+**EKS-Demo-Admin-policy**
+```
+{
+   "Version": "2012-10-17",
+   "Statement": [
+        {
+           "Effect": "Allow",
+           "Action": [
+               "eks:*"
+            ],
+           "Resource": "*"
+        }
+    ]
+}
+```
+
+
