@@ -63,5 +63,47 @@ To establish the required privileges, start by creating the following custom pol
     ]
 }
 ```
+**CloudFormation-Demo-Admin-policy**
+
+```
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Effect": "Allow",
+            "Action": [
+                "cloudformation:*"
+            ],
+            "Resource": "*"
+        }
+    ]
+}
+```
+Once the custom policies are in place, attach the following permissions to the IAM user designated for this exercise:
+
+- AmazonEC2FullAccess
+- IAMFullAccess
+- AmazonVPCFullAccess
+- CloudFormation-Demo-Admin-policy
+- EKS-Demo-Admin-policy
+
+### Setting Up and Configuring the Required CLIs:
+
+To successfully build and manage your Amazon EKS cluster, a few essential command-line interfaces need to be installed and properly configured. These tools allow you to communicate with the EKS service, handle cluster deployments, and carry out a wide range of operational tasks. Below is a step-by-step walkthrough for setting up each of the necessary CLIs.
+
+**AWS CLI:**
+
+1. Begin by installing the AWS CLI by referring to the setup instructions available in the official AWS CLI User Guide.
+2. Once installed, configure it by executing the aws configure command and entering your AWS Access Key ID, Secret Access Key, preferred default region, and desired output format.
+
+**eksctl:**
+
+1. Proceed with installing eksctl by consulting the setup documentation found in the official eksctl GitHub repository.
+2. After installation, confirm it is working correctly by running the eksctl version command.
+
+**kubectl:**
+
+1. Install kubectl by following the setup guidelines outlined in the official Kubernetes documentation.
+2. Once the installation is complete, validate it by executing the kubectl version command.
 
 
